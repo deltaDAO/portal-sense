@@ -1,4 +1,9 @@
 :root {
+  /* sense colors */
+  --sense-navy-blue: #12306d;
+  --sense-electric-blue: #0053ff;
+  --sense-turquoise: #6af4ff;
+
   /* Portal brand color variables */
   --brand-white: #ffffff;
   --brand-black: #00151f;
