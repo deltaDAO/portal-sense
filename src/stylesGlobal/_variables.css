@@ -141,10 +141,10 @@
   --confetti-color-four: var(--brand-grey-light);
   --confetti-color-five: var(--brand-grey-lighter);
 
-  --font-family-base: 'Titillium Web', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Helvetica, Arial, sans-serif;
-  --font-family-heading: 'Titillium Web', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-family-base: 'Axis', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Helvetica, Arial, sans-serif;
+  --font-family-heading: 'Axis', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Helvetica, Arial, sans-serif;
   --font-family-monospace: 'Fira Code', 'Fira Mono', Menlo, Monaco, Consolas,
     'Courier New', monospace;
 
