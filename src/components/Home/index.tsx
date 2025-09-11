@@ -87,8 +87,6 @@ export default function HomePage(): ReactElement {
           <OnboardingSection />
         </Container>
       )}
-      <Ecosystem />
-      <TopSales title="Publishers With Most Sales" />
       <HomeContent />
       {hasFeaturedAssets() && (
         <>

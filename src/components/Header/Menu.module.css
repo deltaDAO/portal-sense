@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  background-color: var(--menu-background-color);
 }
 
 .logo {
@@ -78,7 +79,6 @@
 
 .link {
   composes: text from '../@shared/atoms/Button/index.module.css';
-
   color: var(--menu-font-color);
   font-weight: var(--menu-link-font-weight);
   font-size: var(--menu-link-font-size);
@@ -147,7 +147,7 @@ svg.caret {
   display: none;
   width: var(--menu-caret-size);
   height: var(--menu-caret-size);
-  fill: var(--menu-caret-fill-color);
+  fill: var(--menu-button-caret-fill-color);
   transition: transform 0.2s ease-out;
   vertical-align: middle;
   margin-left: calc(var(--spacer) / 4);
