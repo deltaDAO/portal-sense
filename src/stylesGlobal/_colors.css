@@ -16,8 +16,8 @@
 
   --brand-gradient: linear-gradient(
     to right bottom,
-    var(--brand-blue-light),
-    var(--brand-blue)
+    var(--sense-turquoise),
+    var(--sense-electric-blue)
   );
 
   --brand-grey: #2b2e3b;
