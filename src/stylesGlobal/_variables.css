@@ -2,9 +2,9 @@
 @import url('../../public/static/fonts/fonts.css');
 
 :root {
-  --color-primary: var(--brand-blue);
+  --color-primary: var(--sense-navy-blue);
   --color-secondary: var(--brand-grey-light);
-  --color-highlight: var(--brand-blue);
+  --color-highlight: var(--sense-electric-blue);
 
   /* Only use these vars for most color referencing for easy light/dark mode */
   --font-color-text: var(--brand-grey);
@@ -38,7 +38,7 @@
   --menu-mobile-navigation-border-size: var(--border-size-sm);
   --menu-mobile-navigation-border-color: var(--brand-grey-lighter);
   --menu-border-color: var(--color-primary);
-  --menu-border-radius: var(--border-radius-sm);
+  --menu-border-radius: var(--border-radius-lg);
   --menu-border-size: var(--border-size);
   --menu-icon-fill-color: var(--color-primary);
   --menu-icon-fill-color-hover: var(--color-primary);
@@ -78,7 +78,7 @@
   --input-selected-border-color: var(--font-color-heading);
 
   /* Buttons */
-  --button-border-radius: var(--border-radius);
+  --button-border-radius: var(--border-radius-lg);
   --button-font-color: var(--brand-white);
   --button-background: var(--font-color-light);
   --button-hover-font-color: var(--brand-white);
@@ -168,6 +168,7 @@
   --spacer: 2rem;
   --border-radius-sm: 2px;
   --border-radius: 0.2rem;
+  --border-radius-lg: 2rem;
   --border-size-sm: 1px;
   --border-size: 2px;
 
