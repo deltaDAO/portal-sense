@@ -6,11 +6,10 @@ import { SortTermOptions } from '../../@types/aquarius/SearchQuery'
 import SectionQueryResult from './SectionQueryResult'
 import styles from './index.module.css'
 import { useAddressConfig } from '@hooks/useAddressConfig'
-import TopSales from './TopSales'
 import HomeContent from './Content'
-import Ecosystem from './Ecosystem'
 import OnboardingSection from '../@shared/Onboarding'
 import Container from '../@shared/atoms/Container'
+import Funding from '@components/@shared/funding'
 
 interface FeaturedSection {
   title: string
@@ -99,9 +98,10 @@ export default function HomePage(): ReactElement {
           ))}
         </>
       )}
-      <SectionQueryResult title="Recently Published" query={queryRecent} />
+      {/*  <SectionQueryResult title="Recently Published" query={queryRecent} />
       <SectionQueryResult title="Most Sales" query={queryMostSales} />
-      <AllAssetsButton />
+      <AllAssetsButton /> */}
+      <Funding />
     </>
   )
 }
