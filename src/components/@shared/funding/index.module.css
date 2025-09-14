@@ -1,11 +1,28 @@
 .container {
   margin-top: calc(var(--spacer) * 2);
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .container > span {
-  width: 70%;
   display: flex;
   align-items: center;
+}
+
+.container > img {
+  margin: 0 var(--spacer);
+  padding-bottom: var(--spacer);
+}
+
+@media (min-width: 55rem) {
+  .container {
+    justify-content: space-between;
+  }
+  .container > span {
+    width: 70%;
+  }
+  .container > img {
+    padding-bottom: unset;
+  }
 }
