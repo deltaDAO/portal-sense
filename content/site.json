@@ -35,7 +35,11 @@
         },
         {
           "name": "Pontus-X Main Portal",
-          "link": "https://portal.main.pontus-x.eu/"
+          "link": "https://portal.main.pontus-x.eu/",
+          "description": "With deltaDAO's data and AI Marketplace, you have the freedom to decide how your data and AI services are offered.",
+          "image": "pontusx_deltadao.webp",
+          "category": "general",
+          "isLive": true
         },
         {
           "name": "EuProGigant",
@@ -83,14 +87,6 @@
           "description": "The CIRP dataspace supports an integrated research environment designed to facilitate coordinated experimental activities within the CIRP STC-C community.",
           "image": "cirp.webp",
           "category": "manufacturing",
-          "isLive": true
-        },
-        {
-          "name": "Pontus-X Main Portal",
-          "link": "https://portal.main.pontus-x.eu/",
-          "description": "With deltaDAO's data and AI Marketplace, you have the freedom to decide how your data and AI services are offered.",
-          "image": "pontusx_deltadao.webp",
-          "category": "general",
           "isLive": true
         },
         {
