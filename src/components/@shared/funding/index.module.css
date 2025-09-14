@@ -1,4 +1,5 @@
 .container {
+  margin-top: calc(var(--spacer) * 2);
   display: flex;
   justify-content: space-between;
 }
