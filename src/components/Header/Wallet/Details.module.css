@@ -38,6 +38,17 @@
 .profileButton,
 .bookmarksButton {
   composes: link from '../../../components/Header/Menu.module.css';
+  color: var(--color-primary);
+}
+
+.profileButton:hover,
+.bookmarksButton:hover {
+  color: var(--color-primary);
+}
+
+.profileButton::after,
+.bookmarksButton::after {
+  background-color: var(--color-primary);
 }
 
 .walletInfo {
