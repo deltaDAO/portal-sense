@@ -55,9 +55,9 @@
   --menu-button-caret-fill-color: var(--color-primary);
 
   /* Footer */
-  --footer-background-color: var(--brand-grey);
+  --footer-background-color: var(--color-primary);
   --footer-font-color: var(--brand-white);
-  --footer-font-color-highlight: var(--brand-cyan);
+  --footer-font-color-highlight: var(--sense-turquoise);
   --footer-link-category-font-color: var(--brand-white);
 
   /* Homepage */
