@@ -116,3 +116,7 @@
 .networkAlert {
   margin: var(--spacer) auto;
 }
+
+.blueFont {
+  color: var(--color-primary);
+}

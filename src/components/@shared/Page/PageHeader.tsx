@@ -46,7 +46,8 @@ export default function PageHeader({
                   text={description}
                   className={cx({
                     description: true,
-                    smallerDescription: !isHome
+                    smallerDescription: !isHome,
+                    blueFont: !isHome
                   })}
                 />
               </div>
