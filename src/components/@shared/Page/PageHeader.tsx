@@ -1,11 +1,9 @@
 import SearchBar from '@components/Header/SearchBar'
-import BrandLogo from '@images/pontusx_logo_horizontal.svg'
-import GaiaXLogo from '@images/gaia-x-logo.svg'
 import Markdown from '@shared/Markdown'
 import classNames from 'classnames/bind'
 import { ReactElement } from 'react'
-import NetworkStatus from '../NetworkStatus'
 import styles from './PageHeader.module.css'
+import Container from '../atoms/Container'
 
 const cx = classNames.bind(styles)
 
@@ -29,37 +27,38 @@ export default function PageHeader({
 
   return (
     <header className={styleClasses}>
-      {isHome ? (
-        <div className={styles.homeTitleContainer}>
-          <BrandLogo />
-          {description && (
-            <Markdown text={description} className={styles.subtitle} />
-          )}
-          <div className={styles.logoContainer}>
-            <h4 className={styles.logoContainerTitle}>powered by</h4>
-            <a
-              href="https://gaia-x.eu/"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              <GaiaXLogo />
-            </a>
+      <div className={isHome && styles.homeTitleContainer}>
+        {isHome && (
+          <div className={styles.titleContainer}>
+            <h1>{title}</h1>
           </div>
-        </div>
-      ) : (
-        <div>
-          <h1 className={styles.title}>{title}</h1>
-          <NetworkStatus className={styles.networkAlert} />
-        </div>
-      )}
-      {description && !isHome && (
-        <Markdown text={description} className={styles.description} />
-      )}
-      {showSearch && (
-        <div className={styles.search}>
-          <SearchBar placeholder="Search for service offerings" />
-        </div>
-      )}
+        )}
+        <Container className={styles.contentContainer}>
+          <div className={isHome && styles.content}>
+            {!isHome && (
+              <div>
+                <h1 className={styles.title}>{title}</h1>
+              </div>
+            )}
+            {description && (
+              <div>
+                <Markdown
+                  text={description}
+                  className={cx({
+                    description: true,
+                    smallerDescription: !isHome
+                  })}
+                />
+              </div>
+            )}
+            {showSearch && (
+              <div className={styles.search}>
+                <SearchBar placeholder="Search for service offerings" />
+              </div>
+            )}
+          </div>
+        </Container>
+      </div>
     </header>
   )
 }
