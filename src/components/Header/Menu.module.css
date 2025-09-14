@@ -5,6 +5,7 @@
   align-items: center;
   flex-wrap: wrap;
   background-color: var(--menu-background-color);
+  justify-content: space-between;
 }
 
 .logo {
@@ -34,7 +35,6 @@
   order: 2;
   display: flex;
   gap: calc(var(--spacer) / 3);
-  margin-left: auto;
 }
 
 @media screen and (min-width: 94rem) {
@@ -47,7 +47,6 @@
   }
   .actions {
     order: 3;
-    margin-left: auto;
   }
 }
 
