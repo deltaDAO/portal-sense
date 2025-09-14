@@ -14,6 +14,25 @@ module.exports = {
       '0x33e1Eb6aE40708Acbb96f1Dc47470495Da60731f' // SENSE - Time Serie - Citizens in the Departments of the City of Kiel
     ]
   },
-  featured: [],
+  featured: [
+    {
+      title: 'Assets from Cartagena',
+      assets: [
+        'did:op:b7e1389d33966d112796e5825a775eb3cec0a005a48ca29d440a705ffa1ecf19', // SENSE - City of Cartagena Weather Data via FIWARE Context Broker
+        'did:op:313514759ab99f27db7d880af2c0a188478561e1724122d693ff900aaba60f80', // SENSE - City of Cartagena Noise Levels Data via FIWARE Context Broker
+        'did:op:f73104856399b8bd4e3686f2e9e26459528e47fe9085fb93129e9558593b000c', // SENSE - City of Cartagena Air Quality Data via FIWARE Context Broker
+        'did:op:f223d0a08bac8ad82add517f979803ecfe2b53e8f1d9b64361917a2cdcd099ae' // SENSE - City of Cartagena Parking Sensor Data via FIWARE Context Broker
+      ]
+    },
+    {
+      title: 'Assets from Kiel',
+      assets: [
+        'did:op:fddf107dd04454758f151308be2422963f14f311ae86d33f7bfef0f364acced9', // SENSE - City of Kiel Parking Spot Data via FIWARE Context Broker
+        'did:op:fcb599d25e942bcb45505ae199c9b29770b743f93fde807ccc359abdf0986036', // SENSE - API - Water level Kiel Fjord - List of stations
+        'did:op:143dd6b5984410bc5272f3f70e6e4505f618ec7660e60a2bea08e6a6f2d05b9b', // SENSE - Time Serie - Citizens in the Departments of the City of Kiel
+        'did:op:2bb91303f2a728bcb7b45ccf62b2d0277f09d7704c598c17ecbbdd9ec4287e3b' // SENSE - Time Serie - Citizens in the Departments of the City of Kiel
+      ]
+    }
+  ],
   verifiedAddresses: PONTUSX_ADDRESSES
 }
