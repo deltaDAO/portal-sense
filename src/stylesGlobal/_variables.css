@@ -89,10 +89,11 @@
   --button-active-font-color: var(--brand-white);
   --button-active-background: var(--font-color-light);
   --button-primary-font-color: var(--brand-white);
-  --button-primary-background: var(--brand-gradient);
-  --button-primary-border-color: var(--brand-black);
-  --button-primary-hover-background: var(--color-primary);
+  --button-primary-background: var(--color-primary);
+  --button-primary-border-color: var(--color-highlight);
+  --button-primary-hover-background: var(--brand-white);
   --button-primary-hover-border-color: var(--color-primary);
+  --button-primary-hover-font-color: var(--color-primary);
   --button-ghost-font-color: var(--color-primary);
   --button-ghost-background: var(--brand-white);
   --button-ghost-hover-background: var(--brand-red-dark);
