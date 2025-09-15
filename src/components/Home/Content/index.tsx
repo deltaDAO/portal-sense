@@ -27,10 +27,6 @@ export default function HomeContent(): ReactElement {
 
   return (
     <div className={styles.container}>
-      <div className={styles.teaser}>
-        <h2>{teaser.title}</h2>
-        <Markdown text={teaser.text} />
-      </div>
       <div className={styles.paragraphs}>
         {paragraphs.map((paragraph, i) => (
           <div
