@@ -55,6 +55,7 @@ export interface AppConfig {
     }
   }
   faucet: {
+    enabled: string
     baseUri: string
   }
   showOnboardingModuleByDefault: boolean
