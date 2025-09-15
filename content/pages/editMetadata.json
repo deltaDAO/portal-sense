@@ -3,6 +3,10 @@
     "success": "🎉 Successfully updated. 🎉\n\nUpdates might not show up right away on your asset. In this case, wait some seconds and reload your asset details page in your browser.",
     "error": "Updating DDO failed.",
     "stateError": "Updating asset state failed.",
+    "edpDescription": "The service identifier is sent to beebucket for EDP creation. To ensure this process works, the EDPS Computation Address and the EDPS algorithm must be authorized. If you are using compute-to-data, beebucket will not have direct access to your data because all computations occur in your chosen environment.",
+    "edpHint": "The EDPS needs access to your asset. \n 1. Add address **[EdpsAlgoAddress]** to allow list \n 2. Add **[EdpsAlgoDid]** to the allowed algorithms",
+    "edpsAccessButton": "Allow EDPS access",
+    "edpRegisterButton": "Request EDP Creation",
     "data": [
       {
         "name": "name",

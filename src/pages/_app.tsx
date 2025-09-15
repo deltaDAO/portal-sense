@@ -16,6 +16,7 @@ import AutomationProvider from '../@context/Automation/AutomationProvider'
 import { FilterProvider } from '@context/Filter'
 import Script from 'next/script'
 import { plausibleDataDomain } from 'app.config'
+import { EdpProvider } from '@context/EdpProvider'
 
 function MyApp({ Component, pageProps }: AppProps): ReactElement {
   Decimal.set({ rounding: 1 })
@@ -40,9 +41,11 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
                   <ConsentProvider>
                     <SearchBarStatusProvider>
                       <FilterProvider>
-                        <App>
-                          <Component {...pageProps} />
-                        </App>
+                        <EdpProvider>
+                          <App>
+                            <Component {...pageProps} />
+                          </App>
+                        </EdpProvider>
                       </FilterProvider>
                     </SearchBarStatusProvider>
                   </ConsentProvider>

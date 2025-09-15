@@ -98,9 +98,6 @@ export default function HomePage(): ReactElement {
           ))}
         </>
       )}
-      {/*  <SectionQueryResult title="Recently Published" query={queryRecent} />
-      <SectionQueryResult title="Most Sales" query={queryMostSales} />
-      <AllAssetsButton /> */}
       <Funding />
     </>
   )

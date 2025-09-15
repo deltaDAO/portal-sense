@@ -23,6 +23,7 @@ import ServiceCredentialVisualizer from '@components/@shared/ServiceCredentialVi
 import Web3Feedback from '@components/@shared/Web3Feedback'
 import { useAccount } from 'wagmi'
 import DDODownloadButton from '@components/@shared/DDODownloadButton'
+import EdpInfo from './EdpInfo'
 
 export default function AssetContent({
   asset
@@ -124,6 +125,7 @@ export default function AssetContent({
         </div>
 
         <div className={styles.actions}>
+          {asset?.services[0]?.type === 'compute' && <EdpInfo asset={asset} />}
           <AssetActions asset={asset} />
           {isOwner && isAssetNetwork && (
             <div className={styles.ownerActions}>

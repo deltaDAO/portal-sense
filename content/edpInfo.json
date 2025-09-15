@@ -1,0 +1,6 @@
+{
+  "title": "Daseen listing - Extended Dataset Profile (EDP)",
+  "edpIsNotRegistered": "Your asset has not been listed on Daseen yet.\n Request the the creation of an Extended Dataset Profile(EDP) with Daseen listing.",
+  "edpIsRegistered": "This data asset has an Extended Dataset Profile(EDP) listed on Daseen.",
+  "exploreEdpButton": "Explore EDP on Daseen"
+}

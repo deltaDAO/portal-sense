@@ -58,6 +58,15 @@ export interface AppConfig {
     baseUri: string
   }
   showOnboardingModuleByDefault: boolean
+  edpConfig: {
+    daseenPontusxApiBaseUrl: string
+    edpsComputationAddress: string
+    edpsAlgoAssets: {
+      [chainId: number]: string
+    }
+    daseenApiBaseUrl: string
+    edpBaseUrl: string
+  }
 }
 export interface SiteContent {
   siteTitle: string

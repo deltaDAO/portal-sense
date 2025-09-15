@@ -1,0 +1,50 @@
+.edpBox {
+  composes: box from '@shared/atoms/Box.module.css';
+  margin: 0 auto var(--spacer) auto;
+  max-width: 35rem;
+}
+
+.edpEditButton {
+  margin-bottom: unset;
+}
+
+.edpDescription {
+  display: flex;
+  align-items: center;
+  margin-bottom: calc(var(--spacer) / 2);
+  gap: calc(var(--spacer) / 4);
+}
+
+.edpDescription p {
+  margin-bottom: unset;
+}
+
+.edpDescription svg {
+  margin: unset;
+  transform: scale(1.5);
+}
+.edpDescription svg path {
+  fill: var(--brand-pink);
+}
+
+.edpDescriptionAndLogoBox {
+  margin-bottom: calc(var(--spacer) / 2);
+}
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.ownerActions {
+  composes: ownerActions from 'index.module.css';
+}
+
+@media (min-width: 25rem) {
+  .edpDescriptionAndLogoBox {
+    display: flex;
+    margin-bottom: unset;
+  }
+}

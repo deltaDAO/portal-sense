@@ -120,6 +120,25 @@ module.exports = {
   showOnboardingModuleByDefault:
     process.env.NEXT_PUBLIC_SHOW_ONBOARDING_MODULE_BY_DEFAULT === 'true',
 
+  edpConfig: {
+    daseenPontusxApiBaseUrl:
+      process.env.NEXT_PUBLIC_EDP_URL || 'https://nautilus.daseen-staging.de',
+    edpsComputationAddress: '0xc1dF3Cd04BE1159f1b6e27Dfa04a846FAbc959dc', // beebucket GmbH
+    edpsAlgoAssets: {
+      32456:
+        process.env.NEXT_PUBLIC_DEVNET_EDPS_ALGO_DID ||
+        'did:op:52b92cd3d89636307e57ab0b3b73f09a5589c6ed470ccb21e283f7e3e9011b92', // Extended Dataset Profile Service (EDPS) v1.0.10 DEV/DEFAULT
+      32457:
+        process.env.NEXT_PUBLIC_TESTNET_EDPS_ALGO_DID ||
+        'did:op:cbbf7ebe08d1c7215fc055011967e0ba51c98a9feedcd64560c88f15a2be6caf' // Extended Dataset Profile Service (EDPS) v1.0.10 TEST/DEFAULT
+    },
+    daseenApiBaseUrl:
+      process.env.NEXT_PUBLIC_EDP_RESOURCE_ENDPOINT ||
+      'https://api.daseen-staging.de',
+    edpBaseUrl:
+      process.env.NEXT_PUBLIC_EDP_BASE_URL || 'https://app.daseen.de/details'
+  },
+
   // hides MetaMask Connect Wallet button
   hideMetaMaskLogin: process.env.NEXT_PUBLIC_HIDE_METAMASK_LOGIN || 'false',
 
