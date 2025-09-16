@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.container > img {
+.container > svg {
   margin: 0 var(--spacer);
   padding-bottom: var(--spacer);
 }
@@ -22,7 +22,7 @@
   .container > span {
     width: 70%;
   }
-  .container > img {
+  .container > svg {
     padding-bottom: unset;
   }
 }
