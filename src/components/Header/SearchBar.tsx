@@ -99,7 +99,9 @@ export default function SearchBar({
     config: { mass: 1, tension: 140, friction: 12 }
   })
 
-  const showSearchBar = isSearchBarVisible || isSearchPage
+  const isHomePage = router.pathname === '/'
+
+  const showSearchBar = !isHomePage || isSearchPage
 
   if (!showSearchBar) return null
 
