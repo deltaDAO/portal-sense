@@ -34,6 +34,7 @@ import { getInitialValues } from './_constants'
 import { MetadataEditForm } from './_types'
 import { validationSchema } from './_validation'
 import styles from './index.module.css'
+import { useEdp } from '@context/EdpProvider'
 
 export default function Edit({
   asset
@@ -53,10 +54,17 @@ export default function Edit({
   const [error, setError] = useState<string>()
   const isComputeType = asset?.services[0]?.type === 'compute'
   const hasFeedback = error || success
+  const [isEdpsReadynessInProgress, setIsEdpsReadynessInProgress] =
+    useState(false)
 
   const { autoWallet, isAutomationEnabled } = useAutomation()
   const [signerToUse, setSignerToUse] = useState(signer)
   const [accountIdToUse, setAccountIdToUse] = useState<string>(accountId)
+  const {
+    isEdpsAlgoMissing,
+    getTrustedAlgorithmListWithEdps,
+    getEdpsAllowAddresses
+  } = useEdp()
 
   useEffect(() => {
     if (isAutomationEnabled && autoWallet?.address) {
@@ -110,6 +118,95 @@ export default function Edit({
       setError(content.form.error)
       LoggerInstance.error(content.form.error)
     }
+  }
+
+  async function deleteCustomHelperAndSignUpdatedAsset(
+    updatedAsset: Asset,
+    values: Partial<MetadataEditForm>
+  ) {
+    // delete custom helper properties injected in the market so we don't write them on chain
+    delete (updatedAsset as AssetExtended).accessDetails
+    delete (updatedAsset as AssetExtended).datatokens
+    delete (updatedAsset as AssetExtended).stats
+    // TODO: revert to setMetadata function
+    const setMetadataTx = await setNFTMetadataAndTokenURI(
+      updatedAsset,
+      accountIdToUse,
+      signerToUse,
+      decodeTokenURI(asset.nft.tokenURI),
+      newAbortController()
+    )
+
+    if (!setMetadataTx) {
+      setError(content.form.error)
+      LoggerInstance.error(content.form.error)
+      return
+    }
+    await setMetadataTx.wait()
+
+    LoggerInstance.log('[edit] asset states', {
+      state: values.assetState,
+      assetState
+    })
+    if (values.assetState !== assetState) {
+      const nft = new Nft(signerToUse)
+
+      const setMetadataStateTx = await nft.setMetadataState(
+        asset?.nftAddress,
+        accountIdToUse,
+        assetStateToNumber(values.assetState)
+      )
+      if (!setMetadataStateTx) {
+        setError(content.form.stateError)
+        LoggerInstance.error(content.form.stateError)
+        return
+      }
+      await setMetadataStateTx.wait()
+    }
+
+    LoggerInstance.log('[edit] setMetadata result', setMetadataTx)
+  }
+
+  async function makeAssetEdpsReady(values: Partial<MetadataEditForm>) {
+    try {
+      setIsEdpsReadynessInProgress(true)
+      const allowAddresses = getEdpsAllowAddresses(asset)
+
+      // TODO: update to add multi service support
+      const updatedService: Service = asset.services[0]
+
+      if (isEdpsAlgoMissing(asset)) {
+        updatedService.compute.publisherTrustedAlgorithms.push(
+          ...(await getTrustedAlgorithmListWithEdps(asset))
+        )
+      }
+
+      for (const address of allowAddresses) {
+        if (!values?.allow?.includes(address)) {
+          values.allow.push(address)
+        }
+      }
+
+      const updatedCredentials = generateCredentials(
+        asset?.credentials,
+        values?.allow,
+        values?.deny
+      )
+      const updatedAsset: Asset = {
+        ...(asset as Asset),
+        services: [updatedService],
+        credentials: updatedCredentials
+      }
+
+      await deleteCustomHelperAndSignUpdatedAsset(updatedAsset, values)
+
+      // Edit succeeded
+      setSuccess(content.form.success)
+    } catch (error) {
+      LoggerInstance.error(error.message)
+      setError(error.message)
+    }
+    setIsEdpsReadynessInProgress(false)
   }
 
   async function handleSubmit(
@@ -217,53 +314,7 @@ export default function Edit({
         if (!tx) return
       }
 
-      // delete custom helper properties injected in the market so we don't write them on chain
-      delete (updatedAsset as AssetExtended).accessDetails
-      delete (updatedAsset as AssetExtended).datatokens
-      delete (updatedAsset as AssetExtended).stats
-      // TODO: revert to setMetadata function
-      const setMetadataTx = await setNFTMetadataAndTokenURI(
-        updatedAsset,
-        accountIdToUse,
-        signerToUse,
-        decodeTokenURI(asset.nft.tokenURI),
-        newAbortController()
-      )
-      // const setMetadataTx = await setNftMetadata(
-      //   updatedAsset,
-      //   accountIdToUse,
-      //   signerToUse,
-      //   newAbortController()
-      // )
-
-      if (!setMetadataTx) {
-        setError(content.form.error)
-        LoggerInstance.error(content.form.error)
-        return
-      }
-      await setMetadataTx.wait()
-
-      LoggerInstance.log('[edit] asset states', {
-        state: values.assetState,
-        assetState
-      })
-      if (values.assetState !== assetState) {
-        const nft = new Nft(signerToUse)
-
-        const setMetadataStateTx = await nft.setMetadataState(
-          asset?.nftAddress,
-          accountIdToUse,
-          assetStateToNumber(values.assetState)
-        )
-        if (!setMetadataStateTx) {
-          setError(content.form.stateError)
-          LoggerInstance.error(content.form.stateError)
-          return
-        }
-        await setMetadataStateTx.wait()
-      }
-
-      LoggerInstance.log('[edit] setMetadata result', setMetadataTx)
+      await deleteCustomHelperAndSignUpdatedAsset(updatedAsset, values)
 
       if (asset.accessDetails.type === 'free') {
         const tx = await setMinterToDispenser(
@@ -303,8 +354,8 @@ export default function Edit({
         await handleSubmit(values, resetForm)
       }}
     >
-      {({ isSubmitting, values }) =>
-        isSubmitting || hasFeedback ? (
+      {({ isSubmitting, handleSubmit, values }) =>
+        isSubmitting || hasFeedback || isEdpsReadynessInProgress ? (
           <EditFeedback
             loading="Updating asset with new metadata..."
             error={error}
@@ -324,6 +375,7 @@ export default function Edit({
               data={content.form.data}
               showPrice={asset?.accessDetails?.type === 'fixed'}
               isComputeDataset={isComputeType}
+              makeAssetEdpsReady={makeAssetEdpsReady}
             />
 
             <Web3Feedback

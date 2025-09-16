@@ -54,6 +54,13 @@ export function MenuLink({ name, link, className, isLive }: MenuItem) {
 
 export default function Menu(): ReactElement {
   const { appConfig, siteContent } = useMarketMetadata()
+  const filteredMenu = siteContent?.menu.filter(
+    (item) =>
+      !(
+        item.link?.toLowerCase() === '/faucet' &&
+        appConfig.faucet.enabled !== 'true'
+      )
+  )
 
   return (
     <nav className={styles.menu}>
@@ -62,7 +69,7 @@ export default function Menu(): ReactElement {
       </Link>
 
       <ul className={styles.navigation}>
-        {siteContent?.menu.map((item: MenuItem) => (
+        {filteredMenu.map((item: MenuItem) => (
           <li key={item.name}>
             {item?.subItems ? (
               <MenuDropdown label={item.name} items={item.subItems} />

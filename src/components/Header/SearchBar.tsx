@@ -61,9 +61,7 @@ export default function SearchBar({
     }
   }, [isSearchBarVisible, homeSearchBarFocus])
 
-  async function startSearch(
-    e: FormEvent<HTMLButtonElement | HTMLInputElement>
-  ) {
+  async function startSearch(e: FormEvent<HTMLFormElement | HTMLInputElement>) {
     e.preventDefault()
 
     if (value === '') setValue(' ')
@@ -88,7 +86,7 @@ export default function SearchBar({
     }
   }
 
-  async function handleButtonClick(e: FormEvent<HTMLButtonElement>) {
+  async function handleButtonClick(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     await startSearch(e)
   }
@@ -101,8 +99,21 @@ export default function SearchBar({
     config: { mass: 1, tension: 140, friction: 12 }
   })
 
+  const isHomePage = router.pathname === '/'
+
+  const showSearchBar = !isHomePage || isSearchPage
+
+  if (!showSearchBar) return null
+
   return (
-    <form className={styles.search} autoComplete={!value ? 'off' : 'on'}>
+    <form
+      className={styles.search}
+      autoComplete={!value ? 'off' : 'on'}
+      onSubmit={(e) => {
+        e.preventDefault()
+        handleButtonClick(e)
+      }}
+    >
       <animated.div style={springStile} className={styles.springContainer}>
         <InputElement
           ref={searchBarRef}
@@ -116,7 +127,7 @@ export default function SearchBar({
           className={styles.input}
           onKeyPress={handleKeyPress}
         />
-        <button onClick={handleButtonClick} className={styles.button}>
+        <button type="submit" className={styles.button}>
           <SearchIcon className={styles.searchIcon} />
         </button>
       </animated.div>

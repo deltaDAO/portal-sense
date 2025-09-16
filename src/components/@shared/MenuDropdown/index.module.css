@@ -16,6 +16,16 @@
 .subItem {
   width: fit-content;
   text-transform: none !important;
+  color: var(--menu-button-font-color);
+}
+.subItem:hover,
+.subItem:focus,
+.subItem:active {
+  color: var(--menu-button-font-color);
+}
+
+.subItem:after {
+  background-color: var(--menu-button-font-color);
 }
 
 .caret,

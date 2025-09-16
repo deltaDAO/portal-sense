@@ -1,0 +1,28 @@
+.container {
+  margin-top: calc(var(--spacer) * 2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.container > span {
+  display: flex;
+  align-items: center;
+}
+
+.container > svg {
+  margin: 0 var(--spacer);
+  padding-bottom: var(--spacer);
+}
+
+@media (min-width: 55rem) {
+  .container {
+    justify-content: space-between;
+  }
+  .container > span {
+    width: 70%;
+  }
+  .container > svg {
+    padding-bottom: unset;
+  }
+}

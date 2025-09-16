@@ -3,7 +3,7 @@ import styles from './Footer.module.css'
 import Markdown from '@shared/Markdown'
 import Links from './Links'
 import { useMarketMetadata } from '@context/MarketMetadata'
-import DeltaDaoLogo from '@images/deltaDAO_Logo_small_RGB_white.svg'
+import DeltaDaoLogo from '@images/sense-blue.svg'
 import Container from '@components/@shared/atoms/Container'
 
 export default function Footer(): ReactElement {
@@ -15,7 +15,6 @@ export default function Footer(): ReactElement {
     <footer className={styles.footer}>
       <Container className={styles.container}>
         <div>
-          <p className={styles.siteTitle}>{siteTitle}</p>
           <a
             href="https://delta-dao.com"
             target="_blank"
@@ -23,7 +22,6 @@ export default function Footer(): ReactElement {
           >
             <div className={styles.main}>
               <DeltaDaoLogo />
-              <p className={styles.subtitle}>{subtitle}</p>
             </div>
           </a>
         </div>

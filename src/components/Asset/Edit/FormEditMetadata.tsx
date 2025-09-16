@@ -11,6 +11,7 @@ import { MetadataEditForm } from './_types'
 import consumerParametersContent from '../../../../content/publish/consumerParameters.json'
 import { GaiaXInformation2210 } from 'src/@types/gaia-x/2210/GXInformation'
 import styles from './FormEditMetadata.module.css'
+import RequestEdpCreationSection from './RequestEdpCreationSection'
 
 export function checkIfTimeoutInPredefinedValues(
   timeout: string,
@@ -25,15 +26,20 @@ export function checkIfTimeoutInPredefinedValues(
 export default function FormEditMetadata({
   data,
   showPrice,
-  isComputeDataset
+  isComputeDataset,
+  makeAssetEdpsReady
 }: {
   data: FormFieldContent[]
   showPrice: boolean
   isComputeDataset: boolean
+  makeAssetEdpsReady: (values: Partial<MetadataEditForm>) => void
 }): ReactElement {
   const { asset } = useAsset()
   const { values, setFieldValue } = useFormikContext<
-    FormPublishData & { gaiaXInformation: GaiaXInformation2210 }
+    FormPublishData & {
+      gaiaXInformation: GaiaXInformation2210
+      allow: string[]
+    }
   >()
 
   // This component is handled by Formik so it's not rendered like a "normal" react component,
@@ -85,77 +91,104 @@ export default function FormEditMetadata({
 
   return (
     <Form>
-      <Field {...getFieldContent('name', data)} component={Input} name="name" />
-
-      <Field
-        {...getFieldContent('description', data)}
-        component={Input}
-        name="description"
-      />
-
-      {showPrice && (
+      {asset.metadata.type === 'dataset' &&
+        asset?.services[0]?.type === 'compute' &&
+        !asset.metadata?.additionalInformation?.saas && (
+          <RequestEdpCreationSection makeAssetEdpsReady={makeAssetEdpsReady} />
+        )}
+      <div
+        className={
+          asset.metadata.type === 'dataset' &&
+          asset?.services[0]?.type === 'compute' &&
+          !asset.metadata?.additionalInformation?.saas
+            ? styles.serviceContainer
+            : ''
+        }
+      >
         <Field
-          {...getFieldContent('price', data)}
+          {...getFieldContent('name', data)}
           component={Input}
-          name="price"
+          name="name"
         />
-      )}
 
-      <Field
-        {...getFieldContent('files', data)}
-        component={Input}
-        name="files"
-      />
+        <Field
+          {...getFieldContent('description', data)}
+          component={Input}
+          name="description"
+        />
 
-      <Field
-        {...getFieldContent('links', data)}
-        component={Input}
-        name="links"
-      />
-
-      <Field
-        {...getFieldContent('timeout', data)}
-        component={Input}
-        name="timeout"
-      />
-
-      <Field {...getFieldContent('tags', data)} component={Input} name="tags" />
-
-      {asset.metadata.type === 'algorithm' && (
-        <>
+        {showPrice && (
           <Field
-            {...getFieldContent('usesConsumerParameters', data)}
+            {...getFieldContent('price', data)}
             component={Input}
-            name="usesConsumerParameters"
+            name="price"
           />
-          {(values as unknown as MetadataEditForm).usesConsumerParameters && (
+        )}
+
+        <Field
+          {...getFieldContent('files', data)}
+          component={Input}
+          name="files"
+        />
+
+        <Field
+          {...getFieldContent('links', data)}
+          component={Input}
+          name="links"
+        />
+
+        <Field
+          {...getFieldContent('timeout', data)}
+          component={Input}
+          name="timeout"
+        />
+
+        <Field
+          {...getFieldContent('tags', data)}
+          component={Input}
+          name="tags"
+        />
+
+        {asset.metadata.type === 'algorithm' && (
+          <>
             <Field
-              {...getFieldContent(
-                'consumerParameters',
-                consumerParametersContent.consumerParameters.fields
-              )}
+              {...getFieldContent('usesConsumerParameters', data)}
               component={Input}
-              name="consumerParameters"
+              name="usesConsumerParameters"
             />
-          )}
-        </>
-      )}
-      <Field
-        {...getFieldContent('allow', data)}
-        component={Input}
-        name="allow"
-      />
-      <Field {...getFieldContent('deny', data)} component={Input} name="deny" />
-      <Field
-        {...getFieldContent('paymentCollector', data)}
-        component={Input}
-        name="paymentCollector"
-      />
-      <Field
-        {...getFieldContent('assetState', data)}
-        component={Input}
-        name="assetState"
-      />
+            {(values as unknown as MetadataEditForm).usesConsumerParameters && (
+              <Field
+                {...getFieldContent(
+                  'consumerParameters',
+                  consumerParametersContent.consumerParameters.fields
+                )}
+                component={Input}
+                name="consumerParameters"
+              />
+            )}
+          </>
+        )}
+        <Field
+          {...getFieldContent('allow', data)}
+          component={Input}
+          name="allow"
+        />
+        <Field
+          {...getFieldContent('deny', data)}
+          component={Input}
+          name="deny"
+        />
+        <Field
+          {...getFieldContent('paymentCollector', data)}
+          component={Input}
+          name="paymentCollector"
+        />
+        <Field
+          {...getFieldContent('assetState', data)}
+          component={Input}
+          name="assetState"
+        />
+      </div>
       <div className={styles.serviceContainer}>
         <h4>Service</h4>
 
