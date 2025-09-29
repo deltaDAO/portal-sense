@@ -10,6 +10,7 @@ import HomeContent from './Content'
 import OnboardingSection from '../@shared/Onboarding'
 import Container from '../@shared/atoms/Container'
 import Funding from '@components/@shared/funding'
+import PartnerLogos from '@components/@shared/PartnerLogos'
 
 interface FeaturedSection {
   title: string
@@ -98,6 +99,7 @@ export default function HomePage(): ReactElement {
           ))}
         </>
       )}
+      <PartnerLogos />
       <Funding />
     </>
   )
