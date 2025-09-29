@@ -11,7 +11,9 @@ module.exports = {
       '0x752Bcd04A2b0Ef9B4cAfBdebFc98739a6b2D6A52', // SENSE - City of Kiel Parking Spot Data via FIWARE Context Broker
       '0x33A89336a8F49687f42E1c5fC565F54C46a9984A', // SENSE - API - Water level Kiel Fjord - List of stations
       '0x65616b5D1F99b4C8C98e67Fc2B45F66eC5093Cb5', // SENSE - Time Serie - Citizens in the Departments of the City of Kiel
-      '0x33e1Eb6aE40708Acbb96f1Dc47470495Da60731f' // SENSE - Time Serie - Citizens in the Departments of the City of Kiel
+      '0x33e1Eb6aE40708Acbb96f1Dc47470495Da60731f', // SENSE - Time Serie - Citizens in the Departments of the City of Kiel
+      '0x3c7b27893395dbe2beb56fd2b0319f4faafe5c34', // EDPS - TEST 
+      '0x4f66c8ba84fbaffa5131f469cdac4a5ea3592cb4' // EDPS - DEV
     ]
   },
   featured: [
@@ -31,6 +33,13 @@ module.exports = {
         'did:op:fcb599d25e942bcb45505ae199c9b29770b743f93fde807ccc359abdf0986036', // SENSE - API - Water level Kiel Fjord - List of stations
         'did:op:143dd6b5984410bc5272f3f70e6e4505f618ec7660e60a2bea08e6a6f2d05b9b', // SENSE - Time Serie - Citizens in the Departments of the City of Kiel
         'did:op:2bb91303f2a728bcb7b45ccf62b2d0277f09d7704c598c17ecbbdd9ec4287e3b' // SENSE - Time Serie - Citizens in the Departments of the City of Kiel
+      ]
+    },
+    {
+      title: 'EDPS - Data Quality Check',
+      assets: [
+        'did:op:cbbf7ebe08d1c7215fc055011967e0ba51c98a9feedcd64560c88f15a2be6caf', // EDPS Test
+        'did:op:52b92cd3d89636307e57ab0b3b73f09a5589c6ed470ccb21e283f7e3e9011b92' // EDPS DEV
       ]
     }
   ],
