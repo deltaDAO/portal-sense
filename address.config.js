@@ -13,7 +13,9 @@ module.exports = {
       '0x65616b5D1F99b4C8C98e67Fc2B45F66eC5093Cb5', // SENSE - Time Serie - Citizens in the Departments of the City of Kiel
       '0x33e1Eb6aE40708Acbb96f1Dc47470495Da60731f', // SENSE - Time Serie - Citizens in the Departments of the City of Kiel
       '0x3c7b27893395dbe2beb56fd2b0319f4faafe5c34', // EDPS - TEST 
-      '0x4f66c8ba84fbaffa5131f469cdac4a5ea3592cb4' // EDPS - DEV
+      '0x4f66c8ba84fbaffa5131f469cdac4a5ea3592cb4', // EDPS - DEV
+      '0xeea0fedb2e14695e59f81ff2c6c5bfa38215e5fc', // City of Cartagena Traffic Flow Data
+      '0xd297bdcc3d12f80234bba89c397d50a69bf33423' // City of Cartagena Crowd Flow Data
     ]
   },
   featured: [
@@ -23,7 +25,9 @@ module.exports = {
         'did:op:b7e1389d33966d112796e5825a775eb3cec0a005a48ca29d440a705ffa1ecf19', // SENSE - City of Cartagena Weather Data via FIWARE Context Broker
         'did:op:313514759ab99f27db7d880af2c0a188478561e1724122d693ff900aaba60f80', // SENSE - City of Cartagena Noise Levels Data via FIWARE Context Broker
         'did:op:f73104856399b8bd4e3686f2e9e26459528e47fe9085fb93129e9558593b000c', // SENSE - City of Cartagena Air Quality Data via FIWARE Context Broker
-        'did:op:f223d0a08bac8ad82add517f979803ecfe2b53e8f1d9b64361917a2cdcd099ae' // SENSE - City of Cartagena Parking Sensor Data via FIWARE Context Broker
+        'did:op:f223d0a08bac8ad82add517f979803ecfe2b53e8f1d9b64361917a2cdcd099ae', // SENSE - City of Cartagena Parking Sensor Data via FIWARE Context Broker
+        'did:op:b6ea4f67fb661ab432b328f832e4af6c074b5e3f5f458aa66ed87012b913b208', // City of Cartagena Traffic Flow Data
+        'did:op:fb93955bac088bfd75e02a8e08082e89569e594e30e38b7d67e3bc4963e55c00' // City of Cartagena Crowd Flow Data
       ]
     },
     {
