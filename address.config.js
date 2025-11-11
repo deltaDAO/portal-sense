@@ -13,7 +13,9 @@ module.exports = {
       '0x65616b5D1F99b4C8C98e67Fc2B45F66eC5093Cb5', // SENSE - Time Serie - Citizens in the Departments of the City of Kiel
       '0x33e1Eb6aE40708Acbb96f1Dc47470495Da60731f', // SENSE - Time Serie - Citizens in the Departments of the City of Kiel
       '0x3c7b27893395dbe2beb56fd2b0319f4faafe5c34', // EDPS - TEST 
-      '0x4f66c8ba84fbaffa5131f469cdac4a5ea3592cb4' // EDPS - DEV
+      '0x4f66c8ba84fbaffa5131f469cdac4a5ea3592cb4', // EDPS - DEV
+      '0xeea0fedb2e14695e59f81ff2c6c5bfa38215e5fc', // City of Cartagena Traffic Flow Data
+      '0xd297bdcc3d12f80234bba89c397d50a69bf33423' // City of Cartagena Crowd Flow Data
     ]
   },
   featured: [
