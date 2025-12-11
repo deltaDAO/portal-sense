@@ -1,0 +1,9 @@
+{
+  "title": "DSIF Catalogue",
+  "description": "Browse service offerings from the VisionsTrust DSIF Catalogue",
+  "content": {
+    "header": "DSIF Catalogue",
+    "subheader": "Discover and explore service offerings",
+    "emptyState": "No service offerings found matching your criteria."
+  }
+}
