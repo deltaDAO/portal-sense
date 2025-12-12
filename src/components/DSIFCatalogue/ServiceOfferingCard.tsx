@@ -43,7 +43,8 @@ export default function ServiceOfferingCard({
           {hasPrice ? (
             <Price
               price={{
-                value: offering.pricing
+                value: offering.pricing,
+                tokenSymbol: offering.currency || '€'
               }}
               size="small"
             />
