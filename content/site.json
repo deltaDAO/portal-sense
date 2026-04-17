@@ -21,7 +21,10 @@
       "name": "Faucet",
       "link": "/faucet"
     },
-
+    {
+      "name": "DSIF Catalogue",
+      "link": "/dsif-catalogue"
+    },
     {
       "name": "Log",
       "link": "https://explorer.pontus-x.eu/"
@@ -201,6 +204,10 @@
           {
             "name": "Catalogue",
             "link": "/search?sort=nft.created&sortOrder=desc"
+          },
+          {
+            "name": "DSIF Catalogue",
+            "link": "/dsif-catalogue"
           },
           {
             "name": "Profile",
